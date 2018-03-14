@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+<lab>
+	<mycase id="1">
+		<casename>Case name</casename>
+		<topo>file.jpg</topo>
+		<testrun id="1">
+			<router id="R1">
+				<command>
+					<cmdname>cmd111</cmdname>
+					<cmdfile>file111</cmdfile>
+				</command>
+				<command>
+					<cmdname>cmd112</cmdname>
+					<cmdfile>file112</cmdfile>
+				</command>
+			</router>
+			<router id="R2">
+				<command>
+					<cmdname>cmd121</cmdname>
+					<cmdfile>file122</cmdfile>
+				</command>
+			</router>
+		</testrun>
+		<testrun id="2">
+			<router id="R1">
+				<command>
+					<cmdname>cmd211</cmdname>
+					<cmdfile>file211</cmdfile>
+				</command>
+				<command>
+					<cmdname>cmd212</cmdname>
+					<cmdfile>file212</cmdfile>
+				</command>
+			</router>
+			<router id="R2">
+				<command>
+					<cmdname>cmd221</cmdname>
+					<cmdfile>file221</cmdfile>
+				</command>
+			</router>
+			<router id="R3">
+				<command>
+					<cmdname>cmd231</cmdname>
+					<cmdfile>file231</cmdfile>
+				</command>
+				<command>
+					<cmdname>cmd232</cmdname>
+					<cmdfile>file232</cmdfile>
+				</command>
+			</router>				
+		</testrun>		
+	</mycase>
+</lab>
