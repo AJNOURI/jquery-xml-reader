@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- PAGE settings -->
+  <link rel="icon" href="https://templates.pingendo.com/assets/Pingendo_favicon.ico">
+  <title>Styleguide</title>
+  <meta name="author" content="Pingendo">
+  <!-- CSS dependencies -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="theme.css" type="text/css"> </head>
+
+<body>
+  <div class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-12">
+          <div class="btn-group m-2">
+            <button type="button" class="btn btn-primary" href="#">Split dropdown</button>
+            <button type="button" class="btn dropdown-toggle dropdown-toggle-split btn-primary" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true"></button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row"> </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="btn-group m-2" id="dropdown_testrun">
+            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Dropdown </button>
+            <div class="dropdown-menu">
+              <h6 class="dropdown-header">Dropdown header</h6>
+              <a class="dropdown-item" href="#">Option 1</a>
+              <a class="dropdown-item" href="#">Option 2</a>
+              <a class="dropdown-item disabled" href="#">Disabled option</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+          </div>
+          <div class="btn-group m-2" id="dropdown_router">
+            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Dropdown </button>
+            <div class="dropdown-menu">
+              <h6 class="dropdown-header">Dropdown header</h6>
+              <a class="dropdown-item" href="#">Option 1</a>
+              <a class="dropdown-item" href="#">Option 2</a>
+              <a class="dropdown-item disabled" href="#">Disabled option</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+          </div>
+          <div class="btn-group m-2" id="dropdown_command">
+            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Dropdown </button>
+            <div class="dropdown-menu">
+              <h6 class="dropdown-header">Dropdown header</h6>
+              <a class="dropdown-item" href="#">Option 1</a>
+              <a class="dropdown-item" href="#">Option 2</a>
+              <a class="dropdown-item disabled" href="#">Disabled option</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6"></div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-6"></div>
+      </div>
+    </div>
+  </div>
+  <script src="http://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 10px;right:10px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:180px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo&nbsp;&nbsp;
+    <img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16">
+  </pingendo>
+  <script>
+    var xml='<?xml version="1.0" ?><lab><mycase id="1"><casename>Case name</casename><topo>file.jpg</topo><testrun id="1"><router id="R1"><command><cmdname>cmd111</cmdname><cmdfile>file111</cmdfile></command><command><cmdname>cmd112</cmdname><cmdfile>file112</cmdfile></command></router><router id="R2"><command><cmdname>cmd121</cmdname><cmdfile>file121</cmdfile></command></router></testrun><testrun id="2"><router id="R1"><command><cmdname>cmd211</cmdname><cmdfile>file211</cmdfile></command><command><cmdname>cmd212</cmdname><cmdfile>file212</cmdfile></command></router><router id="R2"><command><cmdname>cmd221</cmdname><cmdfile>file221</cmdfile></command></router><router id="R3"><command><cmdname>cmd231</cmdname><cmdfile>file231</cmdfile></command><command><cmdname>cmd232</cmdname><cmdfile>file232</cmdfile></command></router></testrun></mycase></lab>';
+    
+    
+    
+    $(document).ready(function() {
+      $xml = $($.parseXML(xml));
+    
+    
+      $xml.find("mycase").each(function() {
+        var mycase = $(this);
+        $("#container").append(" Casename:- " + mycase.find("casename").text() + "<br />");
+        $("#container").append(" topofile:- " + mycase.find("topo").text() + "<br />");
+        $("#container").append(" Case id:- " + mycase.attr("id") + "<br />");
+        mycase.find("testrun").each(function() {
+          var testrun = $(this);
+          $("#container").append("--- testrun id:- " + testrun.attr("id") + "<br />");
+          testrun.children("router").each(function() {
+            var router = $(this);
+            $("#container").append("------ router id:- " + router.attr("id") + "<br />");
+            router.find("command").each(function() {
+              var command = $(this);
+              $("#container").append("--------- cmdname:- " + command.find("cmdname").text() + ", cmdfile:- " + command.find("cmdfile").text() + "<br />");
+            });
+          });
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
