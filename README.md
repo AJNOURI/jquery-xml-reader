@@ -2,7 +2,7 @@
 
 
 ### Replacement for the frontend Flash web app used OfflineLab: a remote device configurator and collector
-[](https://github.com/AJNOURI/offlinelab)
+https://github.com/AJNOURI/offlinelab
 
 ##### Using Docker httpd for the dev environment
 
