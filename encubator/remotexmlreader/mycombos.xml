@@ -3,7 +3,7 @@
 	<mycase id="1">
 		<casename>Case name</casename>
 		<topo>file.jpg</topo>
-		<testrun id="1">
+		<testrun id="testrun 1">
 			<router id="R1">
 				<command>
 					<cmdname>cmd111</cmdname>
@@ -21,7 +21,7 @@
 				</command>
 			</router>
 		</testrun>
-		<testrun id="2">
+		<testrun id="testrun 2">
 			<router id="R1">
 				<command>
 					<cmdname>cmd211</cmdname>
