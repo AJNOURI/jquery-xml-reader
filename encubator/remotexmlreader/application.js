@@ -22,17 +22,47 @@ function removeCommands() {
   });
 }
 
-
-
-function loadRouters(trun) {
-
-  //removeRouters();
+function loadCommands(trun, rtr) {
   $.ajax({
     url: "mycombos.xml",
     dataType: "xml",
     success: function(data) {
       //-->
+      $(data).find("mycase").each(function() {
+        var mycase = $(this);
 
+        mycase.find("testrun").each(function() {
+          var testrun = $(this);
+          var trunval = testrun.attr("id");
+          //alert(val);
+          if (trunval == trun) {
+            //alert("Got the testrun");
+            testrun.children("router").each(function() {
+              var router = $(this);
+              var rval = router.attr("id");
+              if (router.attr("id") == rtr) {
+                //alert("Got the router");
+                router.find("command").each(function() {
+                  var command = $(this);
+                  $("#dropdown_commands").find(".dropdown-menu").append('<li><a class="dropdown-item" href="#" data-value="' + command.text() + '">' + command.text() + '</a></li>');
+                  // dynamic Router list need custom event handler
+                  $(".dropdown-item").on( "click", function() {
+                    //alert("each dropdownitem of router");
+                    $(this).closest(".dropdown").find('.btn').html($(this).text());// + ' <span class="caret"></span>');
+                    $(this).closest(".dropdown").find('.btn').val($(this).data('value'));
+                  });
+                });
+              }
+            });
+          }
+
+
+function loadRouters(trun) {
+  $.ajax({
+    url: "mycombos.xml",
+    dataType: "xml",
+    success: function(data) {
+      //-->
       $(data).find("mycase").each(function() {
         var mycase = $(this);
 
@@ -42,10 +72,6 @@ function loadRouters(trun) {
           
           //Only for the given trun
           if (testrun.attr("id") == trun) {
-            //alert(testrun.attr("id"));
-
-            
-
             testrun.find("router").each(function() {
               var router = $(this);
               //alert(router.attr("id"));
@@ -54,9 +80,13 @@ function loadRouters(trun) {
               
                // dynamic Router list need custom event handler
               $(".dropdown-item").on( "click", function() {
+
+                var cmd = $(this);
                 //alert("each dropdownitem of router");
-                $(this).closest(".dropdown").find('.btn').html($(this).text());// + ' <span class="caret"></span>');
-                $(this).closest(".dropdown").find('.btn').val($(this).data('value'));
+                cmd.closest(".dropdown").find('.btn').html(cmd.text());// + ' <span class="caret"></span>');
+                cmd.closest(".dropdown").find('.btn').val(cmd.data('value'));
+                removeCommands();
+                loadCommands(trun,cmd.text());
 
               });//ropdown-item click function
             }); //routers
@@ -89,8 +119,9 @@ function loadtestruns() {
           dropdownitem.closest(".dropdown").find('.btn').html(dropdownitem.text());// + ' <span class="caret"></span>');
           dropdownitem.closest(".dropdown").find('.btn').val(dropdownitem.data('value'));
           
-          //Clean router list
+          //Clean both router and command lists
           removeRouters();
+          removeCommands();
           //Load router list of the selected testrun
           loadRouters(dropdownitem.text());
         });//ropdown-item click function
@@ -104,9 +135,7 @@ function loadtestruns() {
 /*
 
 ### TODO
-- save data into a data structure (arrays?, objects?)
-- fill dropdown lists depending on each other hierarchically
-- Clear router's and command's dropdown list before filling with new list
+on command click, load the appropriate command file into a scrollable text area
 
 
 ### NOTES
