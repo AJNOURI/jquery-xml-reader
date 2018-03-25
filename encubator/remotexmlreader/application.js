@@ -16,7 +16,7 @@ function removeRouters() {
 
 function removeCommands() {
   $("#dropdown_commands").find(".btn").html("Choose a command");
-  $("#dropdown_commands").find(".btn").val("Choose a command");  
+  $("#dropdown_commands").find(".btn").val("Choose a command");
   $("#dropdown_commands").find(".dropdown-item").each(function() {
     $(this).remove();
   });
@@ -55,6 +55,12 @@ function loadCommands(trun, rtr) {
               }
             });
           }
+        });
+      });
+    }
+  });
+}
+
 
 
 function loadRouters(trun) {
@@ -69,7 +75,7 @@ function loadRouters(trun) {
         mycase.find("testrun").each(function() {
           //alert("this is a testrun");
           var testrun = $(this);
-          
+
           //Only for the given trun
           if (testrun.attr("id") == trun) {
             testrun.find("router").each(function() {
@@ -77,7 +83,7 @@ function loadRouters(trun) {
               //alert(router.attr("id"));
               //Load & build router list
               $("#dropdown_routers").find(".dropdown-menu").append('<li><a class="dropdown-item" href="#" data-value="' + router.attr("id") + '">' + router.attr("id") + '</a></li>');
-              
+
                // dynamic Router list need custom event handler
               $(".dropdown-item").on( "click", function() {
 
@@ -110,7 +116,7 @@ function loadtestruns() {
         var testrun = $(this);
         //alert("this (each testrun):" + testrun);
         $("#dropdown_testrun").find(".dropdown-menu").append('<li><a class="dropdown-item" href="#" data-value="' + testrun.attr("id") + '">' + testrun.attr("id") + '</a></li>');
-        
+
         // Dynamic list need custom event handler
         $(".dropdown-item").on( "click", function() {
           var dropdownitem = $(this);
@@ -118,7 +124,7 @@ function loadtestruns() {
 
           dropdownitem.closest(".dropdown").find('.btn').html(dropdownitem.text());// + ' <span class="caret"></span>');
           dropdownitem.closest(".dropdown").find('.btn').val(dropdownitem.data('value'));
-          
+
           //Clean both router and command lists
           removeRouters();
           removeCommands();
